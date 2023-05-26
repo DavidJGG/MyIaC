@@ -1,0 +1,80 @@
+
+tag_name = "east1DavidTerra"
+
+vpc_config = {
+  vpc_cidr = "159.0.0.0/16"
+}
+
+
+efs_config = {
+  encrypted        = true
+  creation_token   = "efs-nClouds-DavidTerra"
+  throughput_mode  = "elastic"
+  performance_mode = "generalPurpose"
+}
+
+web_server_launchTemplate = {
+  image_id                    = "ami-0889a44b331db0194"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = false
+  delete_on_termination       = true
+  disk_size                   = 10
+  path_user_data              = "/modules/launchtemplate/scripts/script.sh.tpl"
+}
+
+route53_certificate = {
+  hosted_zone_name = "training.test-something.com"
+  fdqn             = "east1davidjgg.training.test-something.com"
+}
+
+aplication_load_balancer = {
+  port     = "443"
+  protocol = "HTTPS"
+}
+
+
+web_servers_autoscaling_group = {
+  desired_capacity = 6
+  min_size         = 1
+  max_size         = 6
+}
+
+route53_resource = {
+  hosted_zone_name     = "training.test-something.com"
+  resource_record_name = "east1davidjgg.training.test-something.com"
+  resource_record_type = "CNAME"
+}
+
+
+
+deployer_launchTemplate = {
+  image_id                    = "ami-0889a44b331db0194"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = false
+  delete_on_termination       = true
+  disk_size                   = 10
+  path_user_data              = "/modules/launchtemplate/scripts/scriptdeploy.sh.tpl"
+  key_pair_name               = "davidKeyeast1DavidTerra"
+}
+
+deployer_autoscaling_group = {
+  desired_capacity = 1
+  min_size         = 1
+  max_size         = 1
+}
+
+bastion_launchTemplate = {
+  image_id                    = "ami-0889a44b331db0194"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = true
+  delete_on_termination       = true
+  disk_size                   = 10
+  key_pair_name               = "davidKeyeast1DavidTerra"
+  path_user_data              = "/modules/launchtemplate/scripts/scriptbastion.sh.tpl"
+}
+
+bastion_autoscaling_group = {
+  desired_capacity = 1
+  min_size         = 1
+  max_size         = 1
+}

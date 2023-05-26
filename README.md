@@ -12,15 +12,15 @@ Proyecto Terrafom
 - Open the ./variables.tf and edit `profile_names` and `aws_region`. Put your information
 - Modify `modules\launchtemplate\main.tf` and put a custom ssh public key in `resource "aws_key_pair" "myKey"`
 - Create a two workspaces with terraform and execute
-	  terraform workspace select proy
-	  terraform workspace select virginia
+	  ```terraform workspace select proy
+	  terraform workspace select virginia```
 	this commans, will create two work spaces, one to deploy in oregon, and other to deploy in virginia.
 	
 - Select one workespace and run (select only one):
 	for workspace proy: 
-	    terraform apply -var-file .\variables\proy.tfvalues
+	    ```terraform apply -var-file .\variables\proy.tfvalues```
 	for workspace virginia:
-	    terraform apply -var-file .\variables\virginia.tfvalues
+	    ```terraform apply -var-file .\variables\virginia.tfvalues```
 	this commands will deploy the infrastructure in a diferent region.
 
 

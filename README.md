@@ -9,6 +9,8 @@ Proyecto Terrafom
 	{path to personal folder}/.aws/credential
 - Download the project and open a terminal inside
 - **A Hosted Zone must exist in Route 53**
+	- Edit the ./variables/*
+	- Modify the hosted zone name of: `route53_certificate` and  `route53_resource` of all variable files
 - Open the ./variables.tf and edit `profile_names` and `aws_region`. Put your information
 - Modify `modules\launchtemplate\main.tf` and put a custom ssh public key in `resource "aws_key_pair" "myKey"`
 - Create a two workspaces with terraform and execute

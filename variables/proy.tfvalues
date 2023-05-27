@@ -14,7 +14,7 @@ efs_config = {
 }
 
 web_server_launchTemplate = {
-  image_id                    = "ami-08333bccc35d71140" #"ami-0889a44b331db0194"
+  image_id                    = "ami-08333bccc35d71140" 
   instance_type               = "t2.micro"
   associate_public_ip_address = false
   delete_on_termination       = true
